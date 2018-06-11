@@ -1,3 +1,4 @@
+import vue.Accueil;
 import vue.Interface_principale;
 
 public class Main {
@@ -13,10 +14,12 @@ public class Main {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Interface_principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        /* Create and display the form */
+        
+        Accueil accueil = new Accueil();
+        accueil.setVisible(true);
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(() -> {
             new Interface_principale().setVisible(true);
-        });
+        });*/
     }
 }
