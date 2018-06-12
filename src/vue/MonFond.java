@@ -6,7 +6,7 @@ import javax.swing.JComponent;
 
 public class MonFond extends JComponent {
     /* Attribut */
-    private Image image;
+    private final Image image;
     
     /* Constructeur */
     public MonFond(Image image) {
