@@ -13,8 +13,6 @@ import modele.Humain;
 import modele.Ia;
 import modele.Joueur;
 import modele.Partie;
-import modele.Piece;
-import modele.PieceDomino;
 import modele.Triomino;
 import utilitaire.UtilDB;
 

@@ -3,8 +3,6 @@ package vue;
 import java.awt.Container;
 import java.awt.Image;
 import java.lang.reflect.Method;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Partie extends MonFond {
     /* Constructeur */
@@ -19,26 +17,26 @@ public class Partie extends MonFond {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        scoreButton = new javax.swing.JButton();
+        dominoButton = new javax.swing.JButton();
+        triominoButton = new javax.swing.JButton();
         retourButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
-        jButton1.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
-        jButton1.setText("Domino");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        dominoButton.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        dominoButton.setText("Domino");
+        dominoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                dominoButtonActionPerformed(evt);
             }
         });
 
-        scoreButton.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
-        scoreButton.setText("Triomino");
-        scoreButton.addActionListener(new java.awt.event.ActionListener() {
+        triominoButton.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        triominoButton.setText("Triomino");
+        triominoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scoreButtonActionPerformed(evt);
+                triominoButtonActionPerformed(evt);
             }
         });
 
@@ -63,8 +61,8 @@ public class Partie extends MonFond {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(scoreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dominoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(triominoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(retourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -77,9 +75,9 @@ public class Partie extends MonFond {
                 .addGap(62, 62, 62)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
-                .addComponent(jButton1)
+                .addComponent(dominoButton)
                 .addGap(18, 18, 18)
-                .addComponent(scoreButton)
+                .addComponent(triominoButton)
                 .addGap(65, 65, 65)
                 .addComponent(retourButton)
                 .addContainerGap(179, Short.MAX_VALUE))
@@ -103,13 +101,27 @@ public class Partie extends MonFond {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
-        
-    }//GEN-LAST:event_scoreButtonActionPerformed
+    /* Fonctions */
+    public void goToChoixAdversaire(String type) {
+        Container parent = getParent().getParent().getParent();
+        Method m;
+        try {
+            Class[] typeArgs = new Class[1];
+            typeArgs[0] = String.class;
+            m = parent.getClass().getMethod("goToChoixAdversaire", typeArgs);
+            m.invoke(parent, new Object[]{type});
+        } catch (Exception ex) {
+        }
+    }
+    
+    /* Attribution des actions aux boutons */
+    private void triominoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_triominoButtonActionPerformed
+        goToChoixAdversaire("domino");
+    }//GEN-LAST:event_triominoButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void dominoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dominoButtonActionPerformed
+        goToChoixAdversaire("triomino");
+    }//GEN-LAST:event_dominoButtonActionPerformed
 
     private void retourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourButtonActionPerformed
         Container parent = getParent().getParent().getParent();
@@ -123,10 +135,10 @@ public class Partie extends MonFond {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton dominoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton retourButton;
-    private javax.swing.JButton scoreButton;
+    private javax.swing.JButton triominoButton;
     // End of variables declaration//GEN-END:variables
 }

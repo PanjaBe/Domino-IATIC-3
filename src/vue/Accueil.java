@@ -10,11 +10,13 @@ public class Accueil extends javax.swing.JFrame {
     /* Attributs */
     private BufferedImage fond;
     private int numPage;
+    private String type;
     
     /* Constructeur */
     public Accueil() {
         setTitle("Magic 6 Polyomino");
         setIconImage(new ImageIcon("src\\images\\icon.png").getImage());
+        setResizable(false);
         try {
             fond = ImageIO.read(new File("src\\images\\fond.jpg"));
             setContentPane(new MonFond(fond));
@@ -41,8 +43,9 @@ public class Accueil extends javax.swing.JFrame {
         partieMenuItem = new javax.swing.JMenuItem();
         precedentMenuItem = new javax.swing.JMenuItem();
         quitterMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuJeu = new javax.swing.JMenu();
+        sauvegarderMenuItem = new javax.swing.JMenuItem();
+        arreterMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,14 +153,23 @@ public class Accueil extends javax.swing.JFrame {
 
         menuBar.add(jMenu1);
 
-        jMenu2.setText("Jeu");
-        jMenu2.setEnabled(false);
+        menuJeu.setText("Jeu");
+        menuJeu.setEnabled(false);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
-        jMenuItem3.setText("Arrêter");
-        jMenu2.add(jMenuItem3);
+        sauvegarderMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        sauvegarderMenuItem.setText("Sauvegarder score");
+        menuJeu.add(sauvegarderMenuItem);
 
-        menuBar.add(jMenu2);
+        arreterMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
+        arreterMenuItem.setText("Arrêter");
+        arreterMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arreterMenuItemActionPerformed(evt);
+            }
+        });
+        menuJeu.add(arreterMenuItem);
+
+        menuBar.add(menuJeu);
 
         setJMenuBar(menuBar);
 
@@ -191,9 +203,39 @@ public class Accueil extends javax.swing.JFrame {
         } else if(numPage == 2) {
             numPage = 1;
             setContentPane(new Partie(fond));
+        }else if(numPage == 3) {
+            numPage = 2;
+            setContentPane(new Adversaire(fond, type));
         }
         repaint();
         revalidate();
+    }
+    
+    public void goToChoixAdversaire(String type) {
+        this.type = type;
+        setContentPane(new Adversaire(fond, type));
+        repaint();
+        revalidate();
+        numPage = 2;
+    }
+    
+    public void goToNombreAdversaire(String type, String typeAdversaire) {
+        setContentPane(new Pseudo(fond, type, typeAdversaire));
+        repaint();
+        revalidate();
+        numPage = 3;
+    }
+    
+    public void goToPartie(String type) {
+        try {
+            BufferedImage image = ImageIO.read(new File("src\\images\\plateau.jpg"));
+            setContentPane(new Plateau(image)); 
+            repaint();
+            revalidate();
+            precedentMenuItem.setEnabled(false);
+            menuJeu.setEnabled(true);
+        } catch(Exception e) {
+        }
     }
     
     /* Attribution des actions aux boutons et sous-menus */
@@ -241,20 +283,29 @@ public class Accueil extends javax.swing.JFrame {
         precedentMenuItem.setEnabled(true);
     }//GEN-LAST:event_partieMenuItemActionPerformed
 
+    private void arreterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arreterMenuItemActionPerformed
+        setContentPane(new MonFond(fond));
+        initComponents();
+        numPage = 0;
+        menuJeu.setEnabled(false);
+        precedentMenuItem.setEnabled(false);
+    }//GEN-LAST:event_arreterMenuItemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem arreterMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuJeu;
     private javax.swing.JButton partieButton;
     private javax.swing.JMenuItem partieMenuItem;
     private javax.swing.JMenuItem precedentMenuItem;
     private javax.swing.JButton quitterButton;
     private javax.swing.JMenuItem quitterMenuItem;
     private javax.swing.JButton regleButton;
+    private javax.swing.JMenuItem sauvegarderMenuItem;
     private javax.swing.JButton scoreButton;
     // End of variables declaration//GEN-END:variables
 }
