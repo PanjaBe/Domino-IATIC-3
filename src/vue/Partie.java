@@ -1,14 +1,19 @@
 package vue;
 
+import java.awt.Container;
 import java.awt.Image;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Partie extends MonFond {
-
+    /* Constructeur */
     public Partie(Image image) {
         super(image);
         initComponents();
     }
 
+    /* Code généré par netbeans */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -16,7 +21,7 @@ public class Partie extends MonFond {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         scoreButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        retourButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
@@ -37,8 +42,13 @@ public class Partie extends MonFond {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
-        jButton4.setText("Retour");
+        retourButton.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
+        retourButton.setText("Retour");
+        retourButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retourButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Poor Richard", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -55,7 +65,7 @@ public class Partie extends MonFond {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(scoreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(retourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -71,7 +81,7 @@ public class Partie extends MonFond {
                 .addGap(18, 18, 18)
                 .addComponent(scoreButton)
                 .addGap(65, 65, 65)
-                .addComponent(jButton4)
+                .addComponent(retourButton)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
 
@@ -98,15 +108,25 @@ public class Partie extends MonFond {
     }//GEN-LAST:event_scoreButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void retourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourButtonActionPerformed
+        Container parent = getParent().getParent().getParent();
+        Method m;
+        try {
+            m = parent.getClass().getMethod("precedent", null);
+            m.invoke(parent, null);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_retourButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton retourButton;
     private javax.swing.JButton scoreButton;
     // End of variables declaration//GEN-END:variables
 }

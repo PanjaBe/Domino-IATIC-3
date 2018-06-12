@@ -2,10 +2,8 @@ package vue;
 
 import dao.DetailScoreDao;
 import java.awt.Image;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
 import modele.DetailScore;
 
@@ -16,27 +14,30 @@ public class Score extends MonFond {
         initComponents();
         try {
             List<DetailScore> scores = DetailScoreDao.findAll(true);
-            List<DetailScore> scoresDomino = new ArrayList();
-            List<DetailScore> scoresTriomino = new ArrayList();
-            int taille = scores.size(), tailleDomino = 0, tailleTriomino = 0;
+            int i, taille = scores.size();
+            int id, points;
+            Date date;
+            String pseudo;
+            DefaultTableModel modelDomino = (DefaultTableModel) tableauDomino.getModel();
+            DefaultTableModel modelTriomino = (DefaultTableModel) tableauTriomino.getModel();
             DetailScore detail;
-            for(int i=0; i<taille; i++) {
+            for(i=0; i<taille; i++) {
                 detail = scores.get(i);
+                id = detail.getPartie().getIdPartie();
+                date = detail.getPartie().getDate();
+                pseudo = detail.getJoueur().getPseudo();
+                points = detail.getPoints();
                 if("domino".equals(detail.getPartie().getDesignation())) {
-                    scoresDomino.add(detail);
-                    tailleDomino++;
+                    modelDomino.addRow(new Object[]{id, date, pseudo, points}); 
                 } else {
-                    scoresTriomino.add(detail);
-                    tailleTriomino++;
+                    modelTriomino.addRow(new Object[]{id, date, pseudo, points});
                 }
             }
-            DefaultTableModel model = new DefaultTableModel();
-            model.addRow(new Object[]{1,new Date(),"huhu",10});
-            tableauDomino.setModel(model);
         } catch(Exception exp) { 
         }
     }
     
+    /* Code généré par netbeans */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -51,7 +52,7 @@ public class Score extends MonFond {
 
         tableauDomino.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "Numéro", "Date", "Joueur", "Points"

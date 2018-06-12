@@ -10,6 +10,7 @@ public class Accueil extends javax.swing.JFrame {
     /* Attributs */
     private BufferedImage fond;
     private int numPage;
+    
     /* Constructeur */
     public Accueil() {
         setTitle("Magic 6 Polyomino");
@@ -22,8 +23,9 @@ public class Accueil extends javax.swing.JFrame {
             initComponents();  
             numPage = 0;
         }
-    }
+    }  
     
+    /* Code généré par netbeans */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -179,15 +181,8 @@ public class Accueil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
-        setContentPane(new Score(fond));
-        repaint();
-        revalidate();
-        numPage = 1;
-        precedentMenuItem.setEnabled(true);
-    }//GEN-LAST:event_scoreButtonActionPerformed
-
-    private void precedentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precedentMenuItemActionPerformed
+    /* Fonctions */
+    public void precedent() {
         if(numPage == 1) {
             setContentPane(new MonFond(fond));
             initComponents();   
@@ -199,6 +194,19 @@ public class Accueil extends javax.swing.JFrame {
         }
         repaint();
         revalidate();
+    }
+    
+    /* Attribution des actions aux boutons et sous-menus */
+    private void scoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreButtonActionPerformed
+        setContentPane(new Score(fond));
+        repaint();
+        revalidate();
+        numPage = 1;
+        precedentMenuItem.setEnabled(true);
+    }//GEN-LAST:event_scoreButtonActionPerformed
+
+    private void precedentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precedentMenuItemActionPerformed
+        precedent();
     }//GEN-LAST:event_precedentMenuItemActionPerformed
 
     private void partieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partieButtonActionPerformed
