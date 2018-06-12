@@ -18,6 +18,8 @@ public class Score extends MonFond {
             int id, points;
             Date date;
             String pseudo;
+            tableauDomino.setFont(new java.awt.Font("Poor Richard", 0, 16));
+            tableauTriomino.setFont(new java.awt.Font("Poor Richard", 0, 16));
             DefaultTableModel modelDomino = (DefaultTableModel) tableauDomino.getModel();
             DefaultTableModel modelTriomino = (DefaultTableModel) tableauTriomino.getModel();
             DetailScore detail;
@@ -49,6 +51,8 @@ public class Score extends MonFond {
         jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableauTriomino = new javax.swing.JTable();
+
+        jTabbedPane1.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
 
         tableauDomino.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

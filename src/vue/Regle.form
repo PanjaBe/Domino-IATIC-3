@@ -35,6 +35,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Poor Richard" size="18" style="0"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -51,8 +56,13 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Poor Richard" size="16" style="0"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Le jeu se joue avec 28 Dominos et de 2 &#xe0; 4 joueurs. Les pi&#xe8;ces de domino sont habituellement deux fois plus longues que large et&#xa;sont constitu&#xe9;es (pour le jeu le plus courant, double-six) d&#x2019;un nombre de 0 &#xe0; 6 sur une moiti&#xe9; de domino et sur l&#x2019;autre moiti&#xe9; &#xa;&#xe9;galement.&#xa;&#xa;Il y a donc au total 7 &#xd7; (7+1) / 2 = 28 pi&#xe8;ces.&#xa;&#xa;Le but du jeu est de poser les Dominos les uns &#xe0; la suite des autres sur une table en les combinant, c&apos;est-&#xe0;-dire qu&apos;un des c&#xf4;t&#xe9;s du&#xa;domino pos&#xe9; doit porter le m&#xea;me nombre de points que le domino sur la table. &#xa;&#xa;Le joueur ayant le double le plus &#xe9;lev&#xe9; (le double 6 donc) commence la partie de domino. Si personne ne poss&#xe8;de ce domino, ce&#xa;sera le joueur ayant le double le plus fort. Le joueur suivant doit &#xe0; son tour poser un domino ayant le m&#xea;me nombre de points sur&#xa;au moins un c&#xf4;t&#xe9; du domino pr&#xe9;c&#xe9;demment pos&#xe9;. Les Dominos forment une cha&#xee;ne.&#xa;&#xa;Chaque joueur garde ses dominos cach&#xe9;s, hors de la vue des autres joueurs. Pour une partie &#xe0; 2 joueurs, chaque joueur pioche 7&#xa;Dominos et pour une partie &#xe0; 3 ou 4 joueurs, chacun pioche 6 Dominos. Celui qui a le domino le plus fort commence. Lorsqu&apos;un&#xa;joueur n&apos;a pas de domino &#xe0; jouer il passe son tour. Le premier qui a pos&#xe9; tous ses dominos a gagn&#xe9;. Si personne ne pose tous ses&#xa;dominos, c&apos;est celui &#xe0; qui il en reste le moins qui gagne.&#xa;&#xa;Variante : avec pioche&#xa;Lorsqu&apos;un joueur n&apos;a pas de domino &#xe0; jouer il pioche dans le talon jusqu&apos;&#xe0; ce qu&apos;il tire un domino qu&apos;il peut placer. Le premier qui&#xa;a pos&#xe9; tous ses dominos a gagn&#xe9;. Si personne ne pose tous ses dominos, c&apos;est celui &#xe0; qui il en reste le moins qui gagne."/>
               </Properties>
             </Component>
           </SubComponents>
@@ -70,8 +80,13 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea2">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Poor Richard" size="16" style="0"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Le jeu se joue avec 56 Triominos et de 2 &#xe0; 4 joueurs. &#xa;&#xa;Le but du jeu est d&#x2019;obtenir un maximum de points en pla&#xe7;ant ses Triominos de fa&#xe7;on strat&#xe9;gique. Pour une partie &#xe0; 2 joueurs, &#xa;chaque joueur pioche 9 Triominos et pour une partie &#xe0; 3 ou 4 joueurs, chacun pioche 7 Triominos. Le reste des Triominos&#xa;constitue la pioche. &#xa;&#xa;Pour d&#xe9;cider qui commence la partie, chaque joueur pioche un Triominos. Celui qui obtient le plus fort total en additionnant&#xa;les chiffres de sa tuile devient le premier joueur (en cas d&#x2019;&#xe9;galit&#xe9;, piocher de nouveau). Ces tuiles retournent ensuite dans la&#xa;pioche.&#xa;&#xa;Pour d&#xe9;buter la partie, le premier joueur choisit l&#x2019;un de ses Triominos et le pose au milieu de la surface de jeu. &#xa;&#xa;Il marque un score correspondant au total des chiffres inscrits sur la tuile jou&#xe9;e. Son tour est alors termin&#xe9;. La partie se poursuit &#xa;dans le sens des aiguilles d&#x2019;une montre. On ne peut jouer qu&#x2019;un seul Triominos par tour.&#xa;&#xa;Le joueur dont c&#x2019;est le tour doit placer un Triominos &#xe0; c&#xf4;t&#xe9; d&#x2019;une tuile d&#xe9;j&#xe0; pos&#xe9;e. Pour que ce coup soit valide, ces 2 Triominos &#xa;doivent avoir un cot&#xe9; en commun, ce qui signifie que les deux pointes doivent correspondre.&#xa;&#xa;Si un joueur ne peut pas (ou ne veut pas) poser de Triominos, il pioche une tuile et tente aussit&#xf4;t de la placer. S&#x2019;il n&#x2019;y parvient&#xa;pas, il en pioche une seconde et tente de la placer. En cas d&#x2019;insucc&#xe8;s, il pioche une troisi&#xe8;me et derni&#xe8;re tuile qu&#x2019;il tente&#xa;&#xe9;galement de placer.&#xa;&#xa;Pour chaque Triominos pioch&#xe9;, ce joueur d&#xe9;duit 5 points de son score. Si apr&#xe8;s avoir pioch&#xe9; 3 fois il ne peut toujours pas jouer,&#xa;il perd encore 10 points suppl&#xe9;mentaires : soit un total de 25 points (5+5+5+10 points de p&#xe9;nalit&#xe9;). On consid&#xe8;re alors que son&#xa;tour est fini, c&#x2019;est au tour du joueur suivant.&#xa;&#xa;Si un joueur doit piocher et que la pioche est vide, il passe son tour et ne change rien &#xe0; son score.&#xa;&#xa;Si plus personne ne peut jouer, la partie s&#x2019;arr&#xea;te. Les joueurs comptabilisent respectivement les points restant de leur&#xa;Triominos et les soustraient de leur total. &#xa;&#xa;Le score est donc calcul&#xe9; en additionnant les trois chiffres du Triominos qui vient d&#x2019;&#xea;tre plac&#xe9; (voir exemples). Mais en plus de&#xa;la valeur du Triominos pos&#xe9;, il est possible de marquer des points bonus en formant certaines figures :&#xa;-40 points suppl&#xe9;mentaires pour un PONT (fig. F). Pour former un pont, il faut un espace vide de chaque c&#xf4;t&#xe9; du Triominos&#xa;&#x9;jou&#xe9; et que la pointe oppos&#xe9;e corresponde.&#xa;-50 points suppl&#xe9;mentaires pour un  HEXAGONE (fig. G).&#xa;-60 points suppl&#xe9;mentaires pour un DOUBLE HEXAGONE (fig. H).&#xa;-70 points suppl&#xe9;mentaires pour un TRIPLE HEXAGONE (fig. I)."/>
               </Properties>
             </Component>
           </SubComponents>
